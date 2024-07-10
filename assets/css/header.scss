@@ -1,3 +1,45 @@
+@property --c1 {
+  syntax: '<color>';
+  initial-value: #ee7752;
+  inherits: false;
+}
+@property --c2 {
+  syntax: '<color>';
+  initial-value: #e73c7e;
+  inherits: false;
+}
+@property --c3 {
+  syntax: '<color>';
+  initial-value: #23a6d5;
+  inherits: false;
+}
+@property --c4 {
+  syntax: '<color>';
+  initial-value: #23d5ab;
+  inherits: false;
+}
+
+@keyframes gradient-anim {
+  from {
+    --c1: #e73c73;
+    --c2: #23a6d5;
+    --c3: #23d5ab;
+    --c4: #ee7752;
+  }
+  50% {
+    --c1: #23a6d5;
+    --c2: #23d5ab;
+    --c3: #ee7752;
+    --c4: #e73c73;
+  }
+  to {
+    --c1: #23d5ab;
+    --c2: #ee7752;
+    --c3: #e73c73;
+    --c4: #23a6d5;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -19,7 +61,9 @@
 
     &:after {
       content: '';
-      background: repeating-linear-gradient(90deg, $accent, $accent 2px, transparent 0, transparent 10px);
+      background-size: 400% 400%;
+      background: linear-gradient(-45deg, var(--c1), var(--c2), var(--c3), var(--c4));
+      animation: gradient-anim 10s linear infinite alternate;
       display: block;
       width: 100%;
       right: 10px;
